@@ -1,0 +1,35 @@
+{% extends 'recruiting/base.html' %}
+
+{% block title %}
+Vacancies
+{% endblock %}
+
+{% block content %}
+<head>
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+</head>
+<body>
+  {% if request.user.is_authenticated %}
+    <header>
+      <form method="GET">
+        {{ vacancies.form.as_p }}
+        <button type="submit">Filter</button>
+      </form>
+    </header>
+    <ul class="vacancy-list">
+      {% for vacancy in vacancies.qs %}
+        <li class="vacancy-item">
+          <a href="{% url 'application' vacancy.id %}">{{ vacancy.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Ви не війшли в свій акаунт. Будь ласка, <a href="/signin">Залогінся</a>, або <a href="/signup">Зареєструйся</a>.</p>
+  {% endif %}
+</body>
+{% endblock %}
+</html>

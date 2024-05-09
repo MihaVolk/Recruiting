@@ -1,0 +1,31 @@
+{% extends 'recruiting/base.html' %}
+
+{% block title %}
+Ура
+{% endblock %}
+
+{% block content %}
+
+<body>
+  
+        <h1>Profile</h1>
+        <p>Name: {{ user.full_name }}</p>
+        <p>Email: {{ user.email }}</p>
+        <p>Phone number: {{ user.phone_number }}</p>
+
+        <h2>Your Applications</h2>
+        <table>
+            <tr>
+                <th>Vacancy</th>
+                <th>Status</th>
+            </tr>
+            {% for application_status in application_statuses %}
+                <tr>
+                    <td>{{ application_status.vacancy_title }}</td>
+                    <td>{{ application_status.status }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+</body>
+</html>
+{% endblock %}

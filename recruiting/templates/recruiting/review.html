@@ -1,0 +1,43 @@
+{% extends 'recruiting/base.html' %}
+
+{% block title %}
+Review
+{% endblock %}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px; /* Other margin settings */
+            margin-bottom: 50px; /* Add a gap below the header */
+          }
+        header, footer {
+          padding: 10px 20px;
+          background-color: #f5f5f5;
+          border-bottom: 1px solid #ddd;
+          margin-bottom: 35px;
+        }
+      </style>
+    
+</head>
+<body>
+    <header>
+        <form method="GET">
+            {{ vacancies.form.as_p }}
+            <button type="submit">Filter</button>
+        </form>
+    </header>
+    <footer>
+    {% for vacancy in vacancies.qs %}
+    <a href="{% url 'vacancy_applications' vacancy.id %}">{{ vacancy.title }}</a>
+    {% endfor %}
+    </footer>
+
+</body>
+</html>
+{% endblock %}

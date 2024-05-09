@@ -1,0 +1,24 @@
+{% extends 'recruiting/base.html' %}
+
+{% block title %}
+Review Application
+{% endblock %}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>Заявки на вакансию "{{ vacancy.title }}"</title>
+    
+</head>
+<body>
+    <h1>Заявки на вакансию "{{ vacancy.title }}"</h1>
+    <ul>
+        {% for application in applications %}
+            <li>
+                <a href="{% url 'application_detail' application.id %}">{{ application.applicant.full_name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+{% endblock %}

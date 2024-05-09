@@ -1,0 +1,37 @@
+{% extends 'recruiting/base.html' %}
+
+{% block title %}
+SignIn
+{% endblock %}
+
+{% block content %}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup</title>
+  
+  {% if block.css %}
+    {{ block.css }}
+  {% endif %}
+  
+  <style>
+    input[type="submit"] {
+      background-color: #007bff; /* Blue background */
+      color: white; /* White text */
+      border: none; /* Remove default border for cleaner look */
+      padding: 10px 20px; /* Adjust padding for desired size */
+      border-radius: 5px; /* Add rounded corners for a modern feel */
+      font-weight: bold; /* Make the text bolder (optional) */
+    }
+  </style>
+</head>
+
+<body>
+  <form method="post">
+    {% csrf_token %}
+    <h6>{{ form.as_p }}</h6>
+    <p>Якщо у вас нема акаунту то можете створити його! <a href="/signup">Зареєструйся!</a>.</p>
+    <p><input type="submit" value="Submit"></p>
+  </form>
+</body>
+{% endblock %}
